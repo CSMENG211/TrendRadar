@@ -1,0 +1,13 @@
+[Unit]
+Description=TrendRadar MCP server
+
+[Service]
+WorkingDirectory=%h/projects/repos/TrendRadar
+ExecStart=%h/projects/repos/TrendRadar/.venv/bin/python -m mcp_server.server --transport http --host 127.0.0.1 --port 3333 --project-root %h/projects/repos/TrendRadar
+Environment=TZ=America/Los_Angeles
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

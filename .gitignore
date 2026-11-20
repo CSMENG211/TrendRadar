@@ -1,0 +1,7 @@
+/.venv/
+/output/
+.env
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store

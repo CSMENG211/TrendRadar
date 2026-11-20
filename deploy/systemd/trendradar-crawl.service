@@ -1,0 +1,10 @@
+[Unit]
+Description=Collect TrendRadar news and RSS feeds
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/repos/TrendRadar
+ExecStart=%h/projects/repos/TrendRadar/.venv/bin/python -m trendradar
+Environment=TZ=America/Los_Angeles
+Environment=PYTHONUNBUFFERED=1
+TimeoutStartSec=300
