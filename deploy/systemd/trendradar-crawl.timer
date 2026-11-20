@@ -1,9 +1,9 @@
 [Unit]
-Description=Collect TrendRadar news every 30 minutes
+Description=Collect TrendRadar news twice daily (06:30 and 18:30 PT)
 
 [Timer]
-OnCalendar=*-*-* *:00,30:00
-Persistent=true
+OnCalendar=*-*-* 06,18:30:00
+Persistent=false
 
 [Install]
 WantedBy=timers.target

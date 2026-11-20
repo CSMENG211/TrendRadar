@@ -22,7 +22,7 @@ systemctl --user start trendradar-crawl.service
 
 The service files expect this checkout path. Change their paths if installing elsewhere. User services start when the user manager starts; enable lingering with `sudo loginctl enable-linger "$USER"` if this machine must collect before login.
 
-Connect the MCP client to `http://127.0.0.1:3333/mcp` using Streamable HTTP. The collector runs every 30 minutes. Data stays in `output/`; new data, credentials, logs, and virtual environments are ignored by Git. The sample databases inherited from upstream remain tracked.
+Connect the MCP client to `http://127.0.0.1:3333/mcp` using Streamable HTTP. The collector runs twice daily (06:30 and 18:30 PT). Data stays in `output/`; new data, credentials, logs, and virtual environments are ignored by Git. The sample databases inherited from upstream remain tracked.
 
 ```bash
 systemctl --user status trendradar-mcp.service trendradar-crawl.timer
@@ -40,7 +40,7 @@ TZ=America/Los_Angeles .venv/bin/python -m trendradar
 TZ=America/Los_Angeles .venv/bin/python -m mcp_server.server --transport http --host 127.0.0.1 --port 3333 --project-root "$PWD"
 ```
 
-Use the assistant repo's `docs/modules/macos_migration.md` for LaunchAgents that keep MCP running and collect every 30 minutes. Keep both the process `TZ` and `config/config.yaml` timezone the same so queries for today use the correct database.
+Use the assistant repo's `docs/modules/macos_migration.md` for LaunchAgents that keep MCP running and collect twice daily (06:30 and 18:30 PT). Keep both the process `TZ` and `config/config.yaml` timezone the same so queries for today use the correct database.
 
 ## Update our fork
 
